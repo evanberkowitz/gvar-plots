@@ -52,8 +52,8 @@ def main():
         gvarplot.errorbar(ax, x, ymod, color='blue', linestyle=':', label=f"{nexp=}")
         X = np.linspace(1,2.5,1000)
         Y = fcn(X, outputs)
-        gvarplot.errorbar(ax, X, Y, sigma=[1,2,3],
-            color='r', alpha=0.08, marker=',', label='fit', zorder=-1)
+        gvarplot.errorband(ax, X, Y, sigma=[1,2,3],
+            color='r', alpha=0.2, label='fit', zorder=-1)
         ax.legend()
 
     # print summary information and error budget

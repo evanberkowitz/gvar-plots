@@ -60,7 +60,7 @@ result = {'b': fit.p['b']}      # we take the fit parameters
 X = np.linspace(0,15,1000)      # and scan on x.
 best_fit = fcn({**result, 'x': X})
 
-gvarplot.errorbar(ax, X, best_fit, sigma=[1,2,3], marker=',', color='red', alpha=1.0/16, zorder=-1)
+gvarplot.errorband(ax, X, best_fit, sigma=[1,2,3], color='red', alpha=0.2, zorder=-1)
 
 ax.set_xlabel('x')
 ax.set_ylabel('y')

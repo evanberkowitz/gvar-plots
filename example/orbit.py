@@ -189,7 +189,7 @@ gvarplot.ellipses(ax, X, Y, color='black', label='Observations')
 # We can visualize the best-fit ellipse by plotting the mean,
 gvarplot.mean(ax, *bf, color='darkgreen', label='Best fit')
 # But, we want to know the uncertainty.
-gvarplot.band(ax, *bf, sigma=[1,2], alpha=1/160, color='green', zorder=-1)
+gvarplot.errorband(ax, *bf, sigma=[1,2], alpha=1/160, color='green', zorder=-1)
 # You might have to fiddle with the alpha ^
 # to prevent it from being too dark.
 

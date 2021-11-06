@@ -1,2 +1,2 @@
-# lsqfit-plots
-Plotting with lsqfit
+# gvar-plots
+Plotting with gvars and lsqfit

@@ -14,6 +14,9 @@ def uncertainty_matrix(gvs, labels=None, sigma=[1,2,3], **kwargs):
                 sigma=sigma, **kwargs)
         return fig, ax
 
+    if isinstance(labels, str):
+        labels=[f"{labels}{n}" for n in range(len(gvs))]
+
     fig, ax = plt.subplots(
             len(gvs), len(gvs),
             sharex='col', sharey='row',

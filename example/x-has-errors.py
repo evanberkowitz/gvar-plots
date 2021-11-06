@@ -65,6 +65,6 @@ gvarplot.errorbar(ax, X, best_fit, sigma=[1,2,3], marker=',', color='red', alpha
 ax.set_xlabel('x')
 ax.set_ylabel('y')
 
-gvarplot.uncertainty_matrix(result['b'], labels=[f'b{n}' for n in range(len(result['b']))])
+gvarplot.uncertainty_matrix(result['b'], labels='b')
 
 plt.show()

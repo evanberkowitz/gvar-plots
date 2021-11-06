@@ -8,22 +8,18 @@ defaults = {
         }
 
 def vspan(ax, x, sigma=[1], **kwargs):
-    if 'label' not in kwargs:
-        for s in sigma:
-            ax.axvspan(x.mean-s*x.sdev, x.mean+s*x.sdev, **{**defaults,**kwargs})
-    else:
-        ax.axvspan(x.mean-sigma[0]*x.sdev, x.mean+sigma[0]*x.sdev, **{**defaults,**kwargs})
+    if not sigma:
+        return
+    ax.axvspan(x.mean-sigma[0]*x.sdev, x.mean+sigma[0]*x.sdev, **{**defaults,**kwargs})
+    if 'label' in kwargs:
         del kwargs['label']
-        for s in sigma[1:]:
-            ax.axvspan(x.mean-s*x.sdev, x.mean+s*x.sdev, **{**defaults,**kwargs})
+    vspan(ax, x, sigma[1:], **kwargs)
 
 def hspan(ax, y, sigma=[1], **kwargs):
-    if 'label' not in kwargs:
-        for s in sigma:
-            ax.axhspan(y.mean-s*y.sdev, y.mean+s*y.sdev, **{**defaults,**kwargs})
-    else:
-        ax.axhspan(y.mean-sigma[0]*y.sdev, y.mean+sigma[0]*y.sdev, **{**defaults,**kwargs})
+    if not sigma:
+        return
+    ax.axhspan(y.mean-sigma[0]*y.sdev, y.mean+sigma[0]*y.sdev, **{**defaults,**kwargs})
+    if 'label' in kwargs:
         del kwargs['label']
-        for s in sigma:
-            ax.axhspan(y.mean-s*y.sdev, y.mean+s*y.sdev, **{**defaults,**kwargs})
+    hspan(ax, y, sigma[1:], **kwargs)
 

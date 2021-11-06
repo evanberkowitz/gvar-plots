@@ -29,4 +29,5 @@ def errorbar(ax, x, y, sigma=[1], **kwargs):
     
     for s in sigma:
         ax.errorbar(A, B, xerr = s*dA, yerr = s*dB, **defaults)
-
+        if 'label' in defaults:
+            del defaults['label']

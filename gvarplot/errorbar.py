@@ -2,30 +2,31 @@ import numpy as np
 import pandas as pd
 import gvar as gv
 
-def errorbar(ax, x, y, **kwargs):
+def errorbar(ax, x, y, sigma=[1], **kwargs):
     if isinstance(x, pd.Series):
         errorbar(ax, np.array(x), y, **kwargs)
         return
     elif isinstance(x[0], gv._gvarcore.GVar):
-        A = [a.mean for a in x]
-        dA= [a.sdev for a in x]
+        A = np.array([a.mean for a in x])
+        dA= np.array([a.sdev for a in x])
     else:
-        A = x
+        A = np.array(x)
         dA= np.zeros(x.shape)
 
     if isinstance(y, pd.Series):
         errorbar(ax, x, np.array(y), **kwargs)
         return
     elif isinstance(y[0], gv._gvarcore.GVar):
-        B = [b.mean for b in y]
-        dB= [b.sdev for b in y]
+        B = np.array([b.mean for b in y])
+        dB= np.array([b.sdev for b in y])
     else:
-        B = y
+        B = np.array(y)
         dB= np.zeros(y.shape)
 
     defaults = {
     }
     defaults.update(kwargs)
     
-    ax.errorbar(A, B, xerr = dA, yerr = dB, **defaults)
+    for s in sigma:
+        ax.errorbar(A, B, xerr = s*dA, yerr = s*dB, **defaults)
 

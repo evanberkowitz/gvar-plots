@@ -5,6 +5,15 @@ import matplotlib.pyplot as plt
 from gvarplot import ellipse, mean, hspan, vspan
 
 def uncertainty_matrix(gvs, labels=None, sigma=[1,2,3], **kwargs):
+
+    if isinstance(gvs, dict) or isinstance(gvs, gv._gvarcore.BufferDict):
+        keys = [k for k in gvs]
+        fig, ax = uncertainty_matrix(
+                [gvs[k] for k in keys],
+                labels=keys if not labels else labels,
+                sigma=sigma, **kwargs)
+        return fig, ax
+
     fig, ax = plt.subplots(
             len(gvs), len(gvs),
             sharex='col', sharey='row',

@@ -70,7 +70,7 @@ def main():
         'svd cut':fit.correction,
         }
 
-    gvarplot.uncertainty_matrix([outputs[o] for o in outputs], [o for o in outputs])
+    gvarplot.uncertainty_matrix(outputs)
     print(gv.fmt_values(outputs))
     print(gv.fmt_errorbudget(outputs, inputs))
 

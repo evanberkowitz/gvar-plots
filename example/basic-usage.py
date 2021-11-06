@@ -61,8 +61,10 @@ X = {
 Y = fcn(X, outputs)
 
 gvarplot.errorbar(ax, X['data1'], Y['data1'], color='gray', alpha=0.1, zorder=-1)
-
 params = ['a', 'b', 'b/a']
-gvarplot.uncertainty_matrix([outputs[o] for o in params], labels=params)
+result = [outputs[k] for k in params]
+gvarplot.uncertainty_matrix(result, labels=params)
+# An example where we pass a vector and xplicitly invoke 
+# the labels param.
 
 plt.show()

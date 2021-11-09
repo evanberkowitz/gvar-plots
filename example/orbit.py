@@ -186,6 +186,7 @@ fig, ax = plt.subplots()
 ax.plot(*exact, color='black', marker=',', label='Underlying')
 # and the data we've fit
 gvarplot.ellipses(ax, X, Y, color='black', label='Observations')
+gvarplot.ellipses(ax, fit.p['X'], fit.p['Y'], color='blue', label='Observations Posterior')
 
 # We can visualize the best-fit ellipse by plotting the mean,
 gvarplot.mean(ax, *bf, color='darkgreen', label='Best fit')

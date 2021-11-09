@@ -167,6 +167,7 @@ fit.p['a'] = fit.p['a-b'] + fit.p['b']
 print(fit)
 print(f"Computed best-fit parameters:")
 print(f"              a     {fit.p['a-b']+fit.p['b']}")
+print(gv.fmt_errorbudget({pr: fit.p[pr] for pr in ['a', 'log(a-b)', 'b', 'x0', 'y0', 'phi']}, priors))
 
 # Strip out the independent data from the result,
 # they're not needed to visualize the best-fit ellipse.
